@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Wrapped</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; padding: 24px; max-width: 720px; margin: 0 auto; }
+  h1 { font-size: 24px; font-weight: 700; margin-bottom: 4px; background: linear-gradient(135deg, #F06C53, #3679F2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  .subtitle { color: #888; font-size: 14px; margin-bottom: 32px; }
+  .section { margin-bottom: 28px; }
+  .section-title { font-size: 13px; font-weight: 700; color: #F06C53; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 12px; }
+  label { display: block; font-size: 13px; color: #888; margin-bottom: 4px; }
+  input, textarea, select { width: 100%; background: #141414; border: 1px solid #333; border-radius: 8px; padding: 10px 14px; color: #fff; font-family: inherit; font-size: 14px; margin-bottom: 12px; }
+  input:focus, textarea:focus { outline: none; border-color: #F06C53; }
+  textarea { min-height: 60px; resize: vertical; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .hint { font-size: 11px; color: #555; margin-top: -8px; margin-bottom: 12px; }
+  .meta-stat { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+  .meta-stat .chip { background: #1a1a1a; border: 1px solid #222; border-radius: 8px; padding: 8px 16px; font-size: 13px; color: #888; }
+  .meta-stat .chip strong { color: #fff; }
+  .btn { display: inline-block; padding: 12px 32px; background: linear-gradient(135deg, #F06C53, #3679F2); border: none; border-radius: 100px; color: #fff; font-size: 15px; font-weight: 700; cursor: pointer; letter-spacing: 0.5px; }
+  .btn:hover { transform: scale(1.02); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-row { display: flex; gap: 12px; align-items: center; margin-top: 24px; }
+  .status { font-size: 13px; color: #888; }
+  .status.ok { color: #2ecc71; }
+  .status.err { color: #F06C53; }
+  #preview-link { font-size: 13px; color: #3679F2; text-decoration: none; margin-left: 12px; }
+  .playbook-item, .vertical-item { background: #141414; border: 1px solid #222; border-radius: 10px; padding: 12px; margin-bottom: 8px; }
+  .playbook-item .row, .vertical-item .row { gap: 8px; }
+  .remove-btn { background: none; border: none; color: #555; cursor: pointer; font-size: 18px; padding: 0 4px; }
+  .remove-btn:hover { color: #F06C53; }
+  .add-btn { background: #1a1a1a; border: 1px dashed #333; border-radius: 8px; padding: 8px 16px; color: #888; font-size: 13px; cursor: pointer; margin-top: 4px; }
+  .add-btn:hover { border-color: #F06C53; color: #F06C53; }
+  .loading { text-align: center; padding: 60px; color: #888; }
+</style>
+</head>
+<body>
+
+<div id="loading" class="loading">Loading data...</div>
+
+<div id="editor" style="display:none;">
+  <h1 id="page-title">Edit Wrapped</h1>
+  <p class="subtitle" id="page-sub">Edit the copy below. Meta numbers stay locked.</p>
+
+  <div class="section">
+    <div class="section-title">Meta Numbers (locked)</div>
+    <div class="meta-stat" id="meta-stats"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Slide Copy</div>
+    <label>Ads one-liner</label>
+    <input id="ct-ads" placeholder="Fun line about the ad count">
+    <label>Impressions one-liner</label>
+    <input id="ct-impressions" placeholder="Fun comparison for impressions">
+    <label>Reach one-liner</label>
+    <input id="ct-reach" placeholder="Fun line about reach">
+    <label>Video one-liner</label>
+    <input id="ct-video" placeholder="Line about video content themes">
+  </div>
+
+  <div class="section">
+    <div class="section-title">What We Learned</div>
+    <div class="row">
+      <div><label>Moved away from</label><input id="wl-old"></div>
+      <div><label>Focus on now</label><input id="wl-new"></div>
+    </div>
+    <label>Why the shift</label>
+    <textarea id="wl-detail"></textarea>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Playbook Goals</div>
+    <div id="playbook-list"></div>
+    <button class="add-btn" onclick="addPlaybook()">+ Add goal</button>
+  </div>
+
+  <div class="section" id="verticals-section">
+    <div class="section-title">Verticals</div>
+    <div id="verticals-list"></div>
+    <button class="add-btn" onclick="addVertical()">+ Add vertical</button>
+    <label style="margin-top:12px;">Verticals subtitle</label>
+    <input id="vert-sub">
+    <label>Verticals footer</label>
+    <input id="vert-footer">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Target</div>
+    <div class="row">
+      <div><label>Number</label><input id="tgt-number" placeholder="e.g. $1M/mo"></div>
+      <div><label>Subtitle</label><input id="tgt-subtitle" placeholder="e.g. per month in funded deals"></div>
+    </div>
+    <label>Detail</label>
+    <textarea id="tgt-detail" placeholder="Use <strong> tags for emphasis"></textarea>
+    <label>Moon goal</label>
+    <input id="tgt-moon" placeholder="Optional stretch goal">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Budget Engine</div>
+    <div class="row" style="grid-template-columns: 1fr 1fr 1fr;">
+      <div><label>Core %</label><input id="eng-core" type="number"></div>
+      <div><label>Test %</label><input id="eng-test" type="number"></div>
+      <div><label>Retarget %</label><input id="eng-retarget" type="number"></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Closing Slide</div>
+    <label>Headline</label>
+    <input id="outro-headline" placeholder="Short punchy headline. Use &lt;br&gt; for line break">
+    <label>Subtext</label>
+    <textarea id="outro-sub" placeholder="1-2 sentences"></textarea>
+    <label>CTA</label>
+    <input id="outro-cta" placeholder="Short call to action">
+  </div>
+
+  <div class="section">
+    <div class="section-title">Playbook Slide Title</div>
+    <input id="playbook-title" placeholder="e.g. The Playbook Ahead">
+  </div>
+
+  <div class="btn-row">
+    <button class="btn" id="save-btn" onclick="save()">Save & Rebuild</button>
+    <span class="status" id="status"></span>
+    <a id="preview-link" href="" target="_blank" style="display:none;">View wrapped</a>
+  </div>
+</div>
+
+<script>
+const DATA_PATH = 'data.json';
+let originalData = null;
+
+async function load() {
+  try {
+    const resp = await fetch(DATA_PATH);
+    if (!resp.ok) throw new Error('Could not load data.json');
+    originalData = await resp.json();
+    populateEditor(originalData);
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('editor').style.display = 'block';
+  } catch (e) {
+    document.getElementById('loading').textContent = 'Error: ' + e.message;
+  }
+}
+
+function populateEditor(d) {
+  document.getElementById('page-title').textContent = `Edit: ${d.client_name} ${d.period_label} Wrapped`;
+  document.getElementById('page-sub').textContent = `${d.date_caption}. Edit the copy below, then rebuild.`;
+
+  // Meta stats (locked)
+  const statsEl = document.getElementById('meta-stats');
+  const s = d.stats || {};
+  const chips = [
+    ['Ads', s.ads_ran], ['Campaigns', s.campaigns],
+    ['Impressions', s.impressions], ['Reach', s.reach],
+    ['Leads', s.leads], ['CPL', s.avg_cpl], ['Video Views', s.video_views],
+  ];
+  statsEl.innerHTML = chips.map(([l,v]) => `<div class="chip"><strong>${v || '0'}</strong> ${l}</div>`).join('');
+
+  // Color text
+  const ct = d.color_text || {};
+  document.getElementById('ct-ads').value = ct.ads || '';
+  document.getElementById('ct-impressions').value = ct.impressions || '';
+  document.getElementById('ct-reach').value = ct.reach || '';
+  document.getElementById('ct-video').value = ct.video || '';
+
+  // What we learned
+  const wl = d.what_learned || {};
+  document.getElementById('wl-old').value = wl.old_approach || '';
+  document.getElementById('wl-new').value = wl.new_approach || '';
+  document.getElementById('wl-detail').value = wl.detail || '';
+
+  // Playbook
+  const pb = d.next_quarter_playbook || [];
+  document.getElementById('playbook-list').innerHTML = '';
+  pb.forEach(p => addPlaybook(p));
+
+  // Verticals
+  const verts = d.verticals || [];
+  document.getElementById('verticals-list').innerHTML = '';
+  verts.forEach(v => addVertical(v));
+  document.getElementById('vert-sub').value = d.verticals_sub || '';
+  document.getElementById('vert-footer').value = d.verticals_footer || '';
+  if (!d.show_verticals) document.getElementById('verticals-section').style.display = 'none';
+
+  // Target
+  const t = d.target || {};
+  document.getElementById('tgt-number').value = t.number || '';
+  document.getElementById('tgt-subtitle').value = t.subtitle || '';
+  document.getElementById('tgt-detail').value = t.detail_html || '';
+  document.getElementById('tgt-moon').value = t.moon_goal || '';
+
+  // Engine
+  const eng = d.campaign_engine || {};
+  document.getElementById('eng-core').value = eng.core_pct || 70;
+  document.getElementById('eng-test').value = eng.test_pct || 20;
+  document.getElementById('eng-retarget').value = eng.retarget_pct || 10;
+
+  // Outro
+  const o = d.outro || {};
+  document.getElementById('outro-headline').value = o.headline || '';
+  document.getElementById('outro-sub').value = o.sub || '';
+  document.getElementById('outro-cta').value = o.cta || '';
+
+  // Playbook title
+  document.getElementById('playbook-title').value = d.playbook_title || 'The Playbook Ahead';
+
+  // Preview link
+  const link = document.getElementById('preview-link');
+  link.href = './';
+  link.style.display = 'inline';
+}
+
+function addPlaybook(data) {
+  const list = document.getElementById('playbook-list');
+  const item = document.createElement('div');
+  item.className = 'playbook-item';
+  item.innerHTML = `
+    <div class="row" style="grid-template-columns: 50px 1fr auto;">
+      <input class="pb-icon" value="${(data && data.icon) || ''}" placeholder="Icon" style="text-align:center;">
+      <input class="pb-title" value="${(data && data.title) || ''}" placeholder="Goal title">
+      <button class="remove-btn" onclick="this.closest('.playbook-item').remove()">x</button>
+    </div>
+    <input class="pb-desc" value="${(data && data.description) || ''}" placeholder="1-sentence description" style="margin-top:6px;">
+  `;
+  list.appendChild(item);
+}
+
+function addVertical(data) {
+  const list = document.getElementById('verticals-list');
+  const item = document.createElement('div');
+  item.className = 'vertical-item';
+  item.innerHTML = `
+    <div class="row" style="grid-template-columns: 50px 1fr auto;">
+      <input class="v-icon" value="${(data && data.icon) || ''}" placeholder="Icon" style="text-align:center;">
+      <input class="v-name" value="${(data && data.name) || ''}" placeholder="Vertical name">
+      <button class="remove-btn" onclick="this.closest('.vertical-item').remove()">x</button>
+    </div>
+  `;
+  list.appendChild(item);
+}
+
+function gatherEdits() {
+  const edits = { ...originalData };
+
+  edits.color_text = {
+    ads: document.getElementById('ct-ads').value,
+    impressions: document.getElementById('ct-impressions').value,
+    reach: document.getElementById('ct-reach').value,
+    video: document.getElementById('ct-video').value,
+  };
+
+  edits.what_learned = {
+    old_approach: document.getElementById('wl-old').value,
+    new_approach: document.getElementById('wl-new').value,
+    detail: document.getElementById('wl-detail').value,
+  };
+
+  edits.next_quarter_playbook = [...document.querySelectorAll('.playbook-item')].map(el => ({
+    icon: el.querySelector('.pb-icon').value,
+    title: el.querySelector('.pb-title').value,
+    description: el.querySelector('.pb-desc').value,
+  }));
+
+  edits.verticals = [...document.querySelectorAll('.vertical-item')].map(el => ({
+    icon: el.querySelector('.v-icon').value,
+    name: el.querySelector('.v-name').value,
+  }));
+  edits.verticals_sub = document.getElementById('vert-sub').value;
+  edits.verticals_footer = document.getElementById('vert-footer').value;
+
+  edits.target = {
+    number: document.getElementById('tgt-number').value,
+    subtitle: document.getElementById('tgt-subtitle').value,
+    detail_html: document.getElementById('tgt-detail').value,
+    moon_goal: document.getElementById('tgt-moon').value,
+  };
+
+  const core = parseInt(document.getElementById('eng-core').value) || 70;
+  const test = parseInt(document.getElementById('eng-test').value) || 20;
+  const retarget = parseInt(document.getElementById('eng-retarget').value) || 10;
+  edits.campaign_engine = {
+    core_pct: core, core_label: core + '%',
+    test_pct: test, test_label: test + '%',
+    retarget_pct: retarget, retarget_label: retarget + '%',
+  };
+
+  edits.outro = {
+    headline: document.getElementById('outro-headline').value,
+    sub: document.getElementById('outro-sub').value,
+    cta: document.getElementById('outro-cta').value,
+  };
+
+  edits.playbook_title = document.getElementById('playbook-title').value;
+
+  return edits;
+}
+
+async function save() {
+  const btn = document.getElementById('save-btn');
+  const status = document.getElementById('status');
+  btn.disabled = true;
+  status.textContent = 'Rebuilding...';
+  status.className = 'status';
+
+  const edits = gatherEdits();
+
+  try {
+    const resp = await fetch('{{REBUILD_WEBHOOK}}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(edits),
+    });
+    if (!resp.ok) throw new Error('Rebuild failed: ' + resp.status);
+    const result = await resp.json();
+    status.textContent = 'Rebuilt! Reloading in 3s...';
+    status.className = 'status ok';
+    setTimeout(() => { window.location.href = './'; }, 3000);
+  } catch (e) {
+    status.textContent = 'Error: ' + e.message;
+    status.className = 'status err';
+  }
+  btn.disabled = false;
+}
+
+load();
+</script>
+</body>
+</html>
