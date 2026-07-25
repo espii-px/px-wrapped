@@ -1,0 +1,7 @@
+credentials.json
+oauth_credentials.json
+oauth_token.json
+__pycache__/
+*.pyc
+.env
+n8n_workflow.json

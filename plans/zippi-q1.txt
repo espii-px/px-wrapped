@@ -1,0 +1,68 @@
+Client: Zippi
+Meta Ad Account ID: 2120443238413329
+Campaign Filter: PX
+
+DONEVERSE Q1 Scaling Plan
+1. Business Goals
+1 year business goal: 5M in funded deals /mo  Moon Goal: 20M in funded deals/mo Q2 goal: 1M/mo in funded deals across multiple niches.  Meta's role: Drives new direct customers at KPI
+2. The top leverage points to achieve these goals
+
+    Increase lead to funded deal ratio with downstream optimizations (CPA)
+    Increase average deal size
+    Expand volume
+
+    Q1 Recap
+    __The big numbers:__ 1. 161 ads ran across 6 campaigns 2. 2.65M impressions reaching 467K people 3. 1,471 leads at an average of $89/lead 4. 584K video views
+    What worked: 1. Downstream data optimization 2. Ad formula 1. Recipe for success 2. Immigrant parents / founders story
+    What didn't: 1. Optimizing toward lowest CPL
+    What we're doubling down on: 1. Finding higher lead to deal ratio creatives and scaling even if CPL is higher on the front end as long as the downstream metrics are in KPI
+
+    Current Economics
+    __Economics Calculactor__
+    13% of Approved Value is funded.
+    Average deal size: 47,500
+    In order to hit 1M in funded we'll need
+    7,695,307 in approvals
+    Which is 162 approvals /mo
+    Currently $1,600/approval 1. High performing ads < $1,000
+
+    Q2 Plan
+    Primary focus for Q2: 1. Optimize for Main KPI 2. Find the scale balance between niches
+    Funnels / verticals in play: 3+ 1. Restaurant 2. Auto 3. Medical
+    What we need to validate over the next 30-90 days: 1. Medical campaign 2. 1M /mo floor of funded deals, CPA for this.
+
+    Campaign Structure
+    Core Conversion Campaigns
+    These remain the primary scaling engine.
+    Role:
+    Drive qualified lead volume
+    Hold the majority of spend
+    Concentrate budget into proven ads and winning angles
+    70% to 80% of spend
+    Testing Campaigns
+    These exist to produce the next round of winners.
+    Role:
+    Test new hooks
+    Test vertical-specific pain points
+    Test offer framing and objections
+    Feed winners into the core campaigns
+    15% to 20% of spend
+    Retargeting Campaigns
+    Retargeting should stay simple and support efficiency.
+    Role:
+    Re-engage warm traffic
+    Reinforce trust and proof
+    Capture missed demand 5% to 10% of spend
+
+    Standards / What We Need To Succeed
+    To manage and grow your business successfully, we need:
+    Downstream sales data
+    Real time show close funded data attribution
+    48-72 Hour approval turnaround on creatives
+
+    Success by End of Q2
+    By the end of Q2, success looks like:
+    $1M in funded deals as a new performance floor
+    At least 2 validated and scaled verticals
+    A clear primary scale engine
+    Medical either validated or cleanly deprioritized

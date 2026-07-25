@@ -1,0 +1,84 @@
+{
+  "client_name": "Zippi",
+  "meta_account_id": "2120443238413329",
+  "campaign_filter": "PX",
+  "quarter": "Q1",
+  "year": "2026",
+  "primary_event": "lead",
+  "primary_event_label": "Leads",
+  "stats": {
+    "ads_ran": "161",
+    "campaigns": "6",
+    "impressions": "2.65M",
+    "reach": "467K",
+    "leads": "1,471",
+    "avg_cpl": "$89",
+    "video_views": "584K",
+    "ads_color_text": "That's more than one ad for every day of the year!",
+    "impressions_color_text": "That's more than the entire population of Chicago!",
+    "reach_color_text": "Nearly half a million people saw Zippi's message",
+    "video_color_text": "Immigrant parents and founder stories really resonated with the audience"
+  },
+  "what_learned": {
+    "old_approach": "Optimizing toward lowest CPL",
+    "new_approach": "Finding higher lead to deal ratio creatives",
+    "detail": "We're scaling even if CPL is higher on the front end as long as the downstream metrics are in KPI."
+  },
+  "next_quarter_playbook": [
+    {
+      "icon": "\ud83c\udfaf",
+      "title": "Optimize for Main KPI",
+      "description": "Focus on downstream metrics and funded deal ratio instead of just cost per lead."
+    },
+    {
+      "icon": "\u2696\ufe0f",
+      "title": "Find Scale Balance Between Niches",
+      "description": "Determine optimal budget allocation across restaurant, auto, and medical verticals."
+    },
+    {
+      "icon": "\ud83c\udfe5",
+      "title": "Validate Medical Campaign",
+      "description": "Test and validate the medical vertical as a new growth engine."
+    },
+    {
+      "icon": "\ud83d\udcb0",
+      "title": "Hit 1M Monthly Floor",
+      "description": "Establish $1M per month in funded deals as the new performance baseline."
+    }
+  ],
+  "verticals": [
+    {
+      "icon": "\ud83c\udf7d\ufe0f",
+      "name": "Restaurant"
+    },
+    {
+      "icon": "\ud83d\ude97",
+      "name": "Auto"
+    },
+    {
+      "icon": "\ud83c\udfe5",
+      "name": "Medical"
+    }
+  ],
+  "verticals_sub": "3+ funnels in play for Q2 expansion",
+  "verticals_footer": "Medical either validated or cleanly deprioritized by end of Q2",
+  "target": {
+    "number": "$1M",
+    "subtitle": "per month in funded deals",
+    "detail_html": "<strong>162 approvals per month</strong><br>at $47,500 average deal size",
+    "moon_goal": "$20M per month in funded deals"
+  },
+  "campaign_engine": {
+    "core_pct": 75,
+    "core_label": "70-80%",
+    "test_pct": 17,
+    "test_label": "15-20%",
+    "retarget_pct": 8,
+    "retarget_label": "5-10%"
+  },
+  "outro": {
+    "headline": "Ready to scale<br>to new heights?",
+    "sub": "We have the playbook, the data, and the momentum to hit $1M monthly in funded deals. Time to execute.",
+    "cta": "Let's make it happen"
+  }
+}

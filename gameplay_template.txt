@@ -1,0 +1,121 @@
+90-Day Gameplay Template
+========================
+Fill in each section. Leave fields blank if not applicable.
+The build script uses these answers directly, so be specific.
+
+--- BASICS ---
+
+Client Name:
+Meta Ad Account ID:
+Campaign Name Filter: PX
+Period Being Recapped: Q2
+Year: 2026
+
+Primary Conversion Event: lead
+  (options: lead, purchase, or a custom event like offsite_conversion.fb_pixel_custom)
+What To Call It: Leads
+  (e.g. Leads, Consults Booked, Applications, Purchases)
+
+--- THE BIG NUMBERS ---
+(These show up on the stat slides. Pull from Meta or enter manually.)
+
+Ads Ran:
+Campaigns:
+Total Impressions:
+People Reached:
+Total Results (leads/purchases/etc):
+Average Cost Per Result:
+Video Views:
+
+--- COLOR TEXT ---
+(One-liners that appear under each stat. Make them fun/contextual.)
+
+Ads one-liner:
+  Example: "That's a new ad every 36 hours."
+Impressions one-liner:
+  Example: "More than the population of Miami."
+Reach one-liner:
+  Example: "467K real humans saw your brand."
+Video one-liner:
+  Example: "Founder story ads drove the most engagement."
+
+--- WHAT WE LEARNED ---
+(The "old approach vs new approach" slide.)
+
+What stopped working:
+  Example: "Optimizing for lowest CPL"
+What replaced it:
+  Example: "Downstream data optimization"
+Why (1-2 sentences):
+  Example: "Cheapest leads weren't converting to funded deals. We shifted to optimizing for lead-to-deal ratio even if front-end CPL was higher."
+
+--- NEXT PERIOD PLAYBOOK ---
+(3-4 goals for next quarter/month. Each gets a card.)
+
+Goal 1 Title:
+Goal 1 Description (1 sentence):
+Goal 1 Icon (emoji):
+
+Goal 2 Title:
+Goal 2 Description (1 sentence):
+Goal 2 Icon (emoji):
+
+Goal 3 Title:
+Goal 3 Description (1 sentence):
+Goal 3 Icon (emoji):
+
+Goal 4 Title:
+Goal 4 Description (1 sentence):
+Goal 4 Icon (emoji):
+
+--- VERTICALS IN PLAY ---
+(Markets/niches being tested or scaled.)
+
+Vertical 1 Name:
+Vertical 1 Icon (emoji):
+
+Vertical 2 Name:
+Vertical 2 Icon (emoji):
+
+Vertical 3 Name:
+Vertical 3 Icon (emoji):
+
+Verticals subtitle:
+  Example: "Testing, validating, scaling."
+Verticals footer:
+  Example: "Validate or deprioritize. No wasted spend."
+
+--- THE TARGET ---
+(Big goal for next period.)
+
+Target Number:
+  Example: "$1M"
+Target Subtitle:
+  Example: "per month in funded deals"
+Target Detail (use <strong> for emphasis):
+  Example: "We need <strong>162 approvals/mo</strong> at <strong>$1,600/approval</strong> to hit this."
+Moon Goal (stretch goal, optional):
+  Example: "$5M/mo in funded deals"
+
+--- CAMPAIGN ENGINE ---
+(Budget split. Should add to ~100%.)
+
+Core Scaling %: 75
+Core Label: 70-80%
+Testing %: 17
+Testing Label: 15-20%
+Retargeting %: 8
+Retargeting Label: 5-10%
+
+--- CLOSING SLIDE ---
+
+Headline (short, punchy, use <br> for line break):
+  Example: "The Playbook<br>Is Set."
+Subtext (1-2 sentences):
+  Example: "Q2 is about finding the scale balance. The data is leading the way."
+CTA:
+  Example: "Let's build the machine."
+
+--- PIPELINE DATA (optional) ---
+Google Sheet URL:
+  (If you have a sheet tracking qualified deals/pipeline value)
