@@ -4,4 +4,7 @@ oauth_token.json
 __pycache__/
 *.pyc
 .env
+# Dated .env backups are still full credential files -- never commit them.
+.env.bak*
+*.env.bak*
 n8n_workflow.json
